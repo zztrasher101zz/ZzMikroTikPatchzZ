@@ -55,7 +55,7 @@ env:
   MIKRO_LICENCE_URL: "mikrotik.com"
   CUSTOM_LICENCE_URL: "127.0.0.1"
   MIKRO_UPGRADE_URL: "download.mikrotik.com"
-  CUSTOM_UPGRADE_URL: "127.0.0.1"
+  CUSTOM_UPGRADE_URL: "download.mikrotik.com"
   MIKRO_RENEW_URL: ${{ secrets.MIKRO_RENEW_URL }}
   CUSTOM_RENEW_URL: ${{ secrets.CUSTOM_RENEW_URL }}
   MIKRO_CLOUD_URL: "cloud2.mikrotik.com"
