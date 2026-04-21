@@ -366,10 +366,10 @@ if __name__=='__main__':
     create_option_parser.add_argument('squashfs',type=str,help='NPK squashfs file')
     create_option_parser.add_argument('-desc','--description',type=str,help='NPK description')
     args = parser.parse_args()
-    kcdsa_private_key = bytes.fromhex(os.environ['CUSTOM_LICENSE_PRIVATE_KEY'])
-    eddsa_private_key = bytes.fromhex(os.environ['CUSTOM_NPK_SIGN_PRIVATE_KEY'])
-    kcdsa_public_key = bytes.fromhex(os.environ['CUSTOM_LICENSE_PUBLIC_KEY'])
-    eddsa_public_key = bytes.fromhex(os.environ['CUSTOM_NPK_SIGN_PUBLIC_KEY'])
+    kcdsa_private_key = bytes.fromhex"9DBC845E9018537810FDAE62824322EEE1B12BAD81FCA28EC295FB397C61CE0B"
+    eddsa_private_key = bytes.fromhex"7D008D9B80B036FB0205601FEE79D550927EBCA937B7008CC877281F2F8AC640"
+    kcdsa_public_key = bytes.fromhex"723A34A6E3300F23E4BAA06156B9327514AEC170732655F16E04C17928DD770F"
+    eddsa_public_key = bytes.fromhex"28F886E32C141123126CFBCAD56766E99D1720CEB1F12BE2468BEBE7662FBEDB"
     
     if args.command =='sign':
         print(f'Signing {args.input}')
