@@ -419,11 +419,11 @@ if __name__ == '__main__':
     netinstall_parser.add_argument('-O','--output',type=str,help='Output file')
     args = parser.parse_args()
     key_dict = {
-        bytes.fromhex(os.environ['MIKRO_LICENSE_PUBLIC_KEY']):bytes.fromhex(os.environ['CUSTOM_LICENSE_PUBLIC_KEY']),
-        bytes.fromhex(os.environ['MIKRO_NPK_SIGN_PUBLIC_KEY']):bytes.fromhex(os.environ['CUSTOM_NPK_SIGN_PUBLIC_KEY'])
+        bytes.fromhex"8E1067E4305FCDC0CFBF95C10F96E5DFE8C49AEF486BD1A4E2E96C27F01E3E32":bytes.fromhex"723A34A6E3300F23E4BAA06156B9327514AEC170732655F16E04C17928DD770F",
+        bytes.fromhex"C293CED638A2A33C681FC8DE98EE26C54EADC5390C2DFCE197D35C83C416CF59":bytes.fromhex"28F886E32C141123126CFBCAD56766E99D1720CEB1F12BE2468BEBE7662FBEDB"
     }
-    kcdsa_private_key = bytes.fromhex(os.environ['CUSTOM_LICENSE_PRIVATE_KEY'])
-    eddsa_private_key = bytes.fromhex(os.environ['CUSTOM_NPK_SIGN_PRIVATE_KEY'])
+    kcdsa_private_key = bytes.fromhex"9DBC845E9018537810FDAE62824322EEE1B12BAD81FCA28EC295FB397C61CE0B"
+    eddsa_private_key = bytes.fromhex"7D008D9B80B036FB0205601FEE79D550927EBCA937B7008CC877281F2F8AC640"
     if args.command =='npk':
         print(f'patching {args.input} ...')
         patch_npk_file(key_dict,kcdsa_private_key,eddsa_private_key,args.input,args.output)
