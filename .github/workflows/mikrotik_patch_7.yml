@@ -207,7 +207,7 @@ jobs:
     - name: Cache mikrotik-${{ env.LATEST_VERSION }}${{ env.ARCH }}.iso
       if: steps.get_latest.outputs.has_new_version == 'true'  && (matrix.arch == 'x86' || matrix.arch == 'arm64')
       id: cache-mikrotik
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: |
           mikrotik.iso
@@ -222,7 +222,7 @@ jobs:
     - name: Cache refind
       if: steps.get_latest.outputs.has_new_version == 'true' && matrix.arch == 'x86'
       id: cache-refind
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: refind-bin-0.14.2.zip
         key: refind
@@ -230,7 +230,7 @@ jobs:
 
     - name: Get refind
       if: steps.get_latest.outputs.has_new_version == 'true' && matrix.arch == 'x86' && steps.cache-refind.outputs.cache-hit != 'true'
-      run: sudo wget --no-check-certificate -nv -O refind-bin-0.14.2.zip https://nchc.dl.sourceforge.net/project/refind/0.14.2/refind-bin-0.14.2.zip
+      run: sudo wget -O refind-bin-0.14.2.zip https://downloads.sourceforge.net/project/refind/0.14.2/refind-bin-0.14.2.zip
 
     - name: Patch mikrotik-${{ env.LATEST_VERSION }}${{ env.ARCH }}.iso
       if: steps.get_latest.outputs.has_new_version == 'true' && (matrix.arch == 'x86' || matrix.arch == 'arm64')
@@ -332,7 +332,7 @@ jobs:
     - name: Cache chr-${{ env.LATEST_VERSION }}${{ env.ARCH }}.img.zip
       if: steps.get_latest.outputs.has_new_version == 'true' && (matrix.arch == 'x86' || matrix.arch == 'arm64')
       id: cache-chr-img
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: |
           chr.img
@@ -588,7 +588,7 @@ jobs:
     - name: Cache all_packages${{ env.ARCH }}-${{ env.LATEST_VERSION }}.zip
       if: steps.get_latest.outputs.has_new_version == 'true' && matrix.arch != 'x86' && matrix.arch != 'arm64'
       id: cache-all-packages
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: all_packages.zip
         key: all_packages${{ env.ARCH }}-${{ env.LATEST_VERSION }}.zip
@@ -602,7 +602,7 @@ jobs:
     - name: Cache Main package routeros-${{ env.LATEST_VERSION }}${{ env.ARCH }}.npk
       if: steps.get_latest.outputs.has_new_version == 'true' && matrix.arch != 'x86' && matrix.arch != 'arm64'
       id: cache-main-package
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: routeros.npk
         key: routeros-${{ env.LATEST_VERSION }}${{ env.ARCH }}.npk
@@ -672,7 +672,7 @@ jobs:
     - name: Cache NetInstall ${{ env.LATEST_VERSION }}${{ env.ARCH }}
       if: steps.get_latest.outputs.has_new_version == 'true' && matrix.arch == 'x86' && env.RELEASE == 'true'
       id: cache-netinstall
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: |
           netinstall.zip
@@ -775,7 +775,7 @@ jobs:
 
     - name: Create Release tag ${{ env.LATEST_VERSION }} ${{ env.ARCH }}
       if: steps.get_latest.outputs.has_new_version == 'true' && env.RELEASE == 'true'
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         name: "RouterOS ${{ env.LATEST_VERSION }} ${{ env.ARCH }}"
         body_path: "CHANGELOG"
